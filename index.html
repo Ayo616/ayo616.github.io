@@ -270,6 +270,198 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/29/Linear-Regression/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan Zhong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yan Zhong's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/08/29/Linear-Regression/" itemprop="url">
+                  Linear Regression
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-29T23:32:06+08:00">
+                2017-08-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+
+
+   <span id="/2017/08/29/Linear-Regression/" class="leancloud_visitors" data-flag-title="Linear Regression">
+     &nbsp; | &nbsp;
+     <span class="post-meta-item-icon">
+       <i class="fa fa-eye"></i>
+     </span>
+     <span class="post-meta-item-text">阅读次数 </span>
+     <span class="leancloud-visitors-count"></span>
+    </span>
+
+
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Linear-Regression-线性回归"><a href="#Linear-Regression-线性回归" class="headerlink" title="Linear Regression(线性回归)"></a>Linear Regression(线性回归)</h2><p>​    线性回归的目的，就是从一堆已知数据和结果中，模拟出一条合适的函数线，之后再对这个函数输入新数据，便能产生出新的预测结果。</p>
+<p>​    线性回归假设特征和结果满足线性关系。其实线性关系的表达能力非常强大，每个特征对结果的影响强弱可以由前面的参数体现，而且每个特征变量可以首先映射到一个函数，然后再参与线性计算。这样就可以表达特征与结果之间的非线性关系。 </p>
+<p>​    从二维空间中引入问题，例如房屋的价格和房屋的面积是有一定关系的，以下是一些房屋的数据</p>
+<p><img src="\img\QQ截图20170829180302.png" alt="QQ截图20170829180302"></p>
+<p>​    我们可以把这些数据绘制成二维图</p>
+<p><img src="\img\2png.png" alt="2png"></p>
+<p>​    还记得我们一开始说的，就是要从已知数据中，进行回归绘制，产生一条回归函数，用来预测新的房屋价格，这里先给出对应的回归函数图形。</p>
+<p><img src="\img\31.png" alt="31"></p>
+<p><strong>这个过程就是线性回归</strong>，那么我们如何进行线性回归呢？在二维上，我们已经在高中就学会了，因为二维的线性回归方程就是y = kx +b ，这个函数的求解我们再熟悉不过了。可是如果在三维、四维、N维中如何求解，回到这个例子，这里只描述一个feature，就是房屋大小，如果还有影响房屋价格的因素，比如房屋的朝向、房屋的地理位置等，也就是说feature有多个，整个数据模型处于多维度空间中了。</p>
+<p>不要怕，细细分析。😀</p>
+<p>我们用X1，X2..Xn 去描述feature里面的分量，比如x1=房间的面积，x2=房间的朝向，等等，我们可以做出一个估计函数：</p>
+<p><img src="http://images.cnitblog.com/blog2015/633472/201503/262037556613399.jpg" alt="img"></p>
+<p>​        </p>
+<pre><code>θ在这儿称为**参数**，在这的意思是调整feature中每个分量的影响力，就是到底是房屋的面积更重要还是房屋的地段更重要。为了如果我们令X0 = 1，就可以化简式子来表示，其中W和X都是向量。
+</code></pre><p>​    那么我们如何来求解这个函数呢，首先我们要知道，这个函数的有多个解，我们第一步必须先找出哪个是最优的解，然后再解出参数得到函数全貌。</p>
+<p>​    如何知道什么样的函数最符合我们的数据模型，或者说我们需要一个机制去评估我们W是否比较好，所以说需要对我们做出的h函数进行评估，一般这个函数称为损失函数（cost function）或者错误函数(error function)，描述h函数不好的程度，在下面，我们称这个函数为J函数:</p>
+<p><img src="http://images.cnitblog.com/blog2015/633472/201503/262045294426265.jpg" alt="img9"></p>
+<p>其实在机器学习中，很多情况就是从先产生预测函数（估计函数），再用损失函数对预测函数进行评估，只要预测函数中的cost function越小，也就是 J(W)，也就说明该预测函数越好，所选取的参数越符合！</p>
+<p>所以问题转化为，<strong>求函数 J 的最小值问题</strong>。</p>
+<p>先来介绍第一种解法。</p>
+<p>求极值，自然联想到函数求导，只不过多维求导，略有复杂，以下给出求导过程。</p>
+<p><img src="http://images.cnitblog.com/blog2015/633472/201503/262057197703308.jpg" alt="img"></p>
+<p>但是这种解法有一个前提，就是矩阵满秩可求解时（求导等于0）。</p>
+<p>那如果矩阵不满秩呢？</p>
+<p>这里有一种更为通用的解法，<strong>梯度下降法</strong>。</p>
+<p><img src="http://img.my.csdn.net/uploads/201209/06/1346902296_9917.png" alt="img8"></p>
+<p>梯度下降法概念：梯度下降算法是一种求局部最优解的方法，对于F(<strong>x</strong>)，在a点的梯度是F(<strong>x</strong>)增长最快的方向，那么它的相反方向则是该点下降最快的方向。</p>
+<p>原理：将函数比作一座山，我们站在某个山坡上，往四周看，从哪个方向向下走一小步，能够下降的最快；</p>
+<p>注意：当变量之间大小相差很大时，应该先将他们做处理，使得他们的值在同一个范围，这样比较准确。</p>
+<p>我们以二元参数为例：</p>
+<p>（1）首先对θ（就是W）赋值，这个值可以是随机的，也可以让θ是一个全零的向量。</p>
+<p>（2）改变θ的值，使得J(θ)按梯度下降的方向进行减少。</p>
+<p>梯度下降法，更通俗的来说，就是对于我们的函数J(θ)求偏导，然后进行不断更新迭代。</p>
+<p><img src="http://img.my.csdn.net/uploads/201209/06/1346902185_3233.png" alt="img"></p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>1、为什么线性回归的损失函数是这样的</p>
+<p><img src="http://images.cnitblog.com/blog2015/633472/201503/262045294426265.jpg" alt="img1"></p>
+<p>答案是：这是最小二乘法，其中1/2系数是为了处理求导时候的约分而设置的，最小二乘法是作为线性回归中比较靠谱的损失函数，详细证明见参考。</p>
+<p>2、数值归一化（Feature Scaling）</p>
+<p>这是一种处理数值的思想：将各个feature的值标准化，使得取值范围大致都在-1&lt;=x&lt;=1之间；减少迭代次数或者数值太大导致的权重过大。常用的方法是Mean Normalization：</p>
+<p><img src="http://img.my.csdn.net/uploads/201209/06/1346902350_2576.png" alt="img4"></p>
+<p>3、梯度下降法参数的选择</p>
+<p><strong>迭代次数和learning rate是影响梯度下降法是否成功收敛到最优值的重要因素</strong>。</p>
+<ul>
+<li><strong>迭代次数</strong>：<ul>
+<li>过少可能使得算法还没有收敛就停止，</li>
+<li>过多导致资源（时间等）的浪费；</li>
+</ul>
+</li>
+<li><strong>learning rate</strong>:<ul>
+<li>过小，使得每次迭代时theta的变化量过小，从而算法收敛过慢，换言之需要增加迭代次数使得算法收敛；</li>
+<li>过大，使得每次迭代时theta的变化量过大，可能在变化（迭代）过程中越过最优（收敛）点。</li>
+</ul>
+</li>
+</ul>
+<p><img src="\img\788978-20160306204228799-1880280740.png" alt="788978-20160306204228799-1880280740"></p>
+<hr>
+<h3 id="参考出处"><a href="#参考出处" class="headerlink" title="参考出处"></a>参考出处</h3><p><a href="http://blog.csdn.net/xiazdong/article/details/7950084" target="_blank" rel="external"></a></p>
+<p><a href="http://blog.csdn.net/xbinworld/article/details/43919445" target="_blank" rel="external"></a></p>
+<p><a href="http://www.cnblogs.com/jerrylead/archive/2011/03/05/1971867.html" target="_blank" rel="external"></a></p>
+<p><a href="http://www.cnblogs.com/llhthinker/p/5248586.html" target="_blank" rel="external"></a></p>
+<p>最近一次修改：2017/8/29</p>
+<p>修改次数：1</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/17/spring-boot-热部署/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -554,145 +746,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/12/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yan Zhong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yan Zhong's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/04/12/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-12T09:22:38+08:00">
-                2017-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-
-
-   <span id="/2017/04/12/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
-     &nbsp; | &nbsp;
-     <span class="post-meta-item-icon">
-       <i class="fa fa-eye"></i>
-     </span>
-     <span class="post-meta-item-text">阅读次数 </span>
-     <span class="leancloud-visitors-count"></span>
-    </span>
-
-
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -760,7 +813,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

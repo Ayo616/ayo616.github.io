@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="spring boot," />
+  <meta name="keywords" content="machine learning," />
 
 
 
@@ -87,20 +87,29 @@
 
 
 
-<meta name="description" content="Spring boot 热部署每次修改代码后都要重启tomcat感觉很麻烦，于是找了下资料，发现spring boot1.3以上就有热部署功能，我用的是1.4版本，此时不用待何时。 环境信息  idea spring boot 1.4  废话不多说，直接使用教程。">
-<meta name="keywords" content="spring boot">
+<meta name="description" content="Linear Regression(线性回归)​    线性回归的目的，就是从一堆已知数据和结果中，模拟出一条合适的函数线，之后再对这个函数输入新数据，便能产生出新的预测结果。 ​    线性回归假设特征和结果满足线性关系。其实线性关系的表达能力非常强大，每个特征对结果的影响强弱可以由前面的参数体现，而且每个特征变量可以首先映射到一个函数，然后再参与线性计算。这样就可以表达特征与结果之间的非线性关">
+<meta name="keywords" content="machine learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring boot 热部署">
-<meta property="og:url" content="http://yoursite.com/2017/04/17/spring-boot-热部署/index.html">
+<meta property="og:title" content="Linear Regression">
+<meta property="og:url" content="http://yoursite.com/2017/08/29/Linear-Regression/index.html">
 <meta property="og:site_name" content="Yan Zhong's blog">
-<meta property="og:description" content="Spring boot 热部署每次修改代码后都要重启tomcat感觉很麻烦，于是找了下资料，发现spring boot1.3以上就有热部署功能，我用的是1.4版本，此时不用待何时。 环境信息  idea spring boot 1.4  废话不多说，直接使用教程。">
-<meta property="og:image" content="http://yoursite.com/img/热部署2.png">
-<meta property="og:image" content="http://yoursite.com/img/springboot热部署.png">
-<meta property="og:updated_time" content="2017-04-17T07:04:13.059Z">
+<meta property="og:description" content="Linear Regression(线性回归)​    线性回归的目的，就是从一堆已知数据和结果中，模拟出一条合适的函数线，之后再对这个函数输入新数据，便能产生出新的预测结果。 ​    线性回归假设特征和结果满足线性关系。其实线性关系的表达能力非常强大，每个特征对结果的影响强弱可以由前面的参数体现，而且每个特征变量可以首先映射到一个函数，然后再参与线性计算。这样就可以表达特征与结果之间的非线性关">
+<meta property="og:image" content="http://yoursite.com/img/QQ截图20170829180302.png">
+<meta property="og:image" content="http://yoursite.com/img/2png.png">
+<meta property="og:image" content="http://yoursite.com/img/31.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog2015/633472/201503/262037556613399.jpg">
+<meta property="og:image" content="http://images.cnitblog.com/blog2015/633472/201503/262045294426265.jpg">
+<meta property="og:image" content="http://images.cnitblog.com/blog2015/633472/201503/262057197703308.jpg">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201209/06/1346902296_9917.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201209/06/1346902185_3233.png">
+<meta property="og:image" content="http://images.cnitblog.com/blog2015/633472/201503/262045294426265.jpg">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201209/06/1346902350_2576.png">
+<meta property="og:image" content="http://yoursite.com/img/788978-20160306204228799-1880280740.png">
+<meta property="og:updated_time" content="2017-08-29T15:41:36.226Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring boot 热部署">
-<meta name="twitter:description" content="Spring boot 热部署每次修改代码后都要重启tomcat感觉很麻烦，于是找了下资料，发现spring boot1.3以上就有热部署功能，我用的是1.4版本，此时不用待何时。 环境信息  idea spring boot 1.4  废话不多说，直接使用教程。">
-<meta name="twitter:image" content="http://yoursite.com/img/热部署2.png">
+<meta name="twitter:title" content="Linear Regression">
+<meta name="twitter:description" content="Linear Regression(线性回归)​    线性回归的目的，就是从一堆已知数据和结果中，模拟出一条合适的函数线，之后再对这个函数输入新数据，便能产生出新的预测结果。 ​    线性回归假设特征和结果满足线性关系。其实线性关系的表达能力非常强大，每个特征对结果的影响强弱可以由前面的参数体现，而且每个特征变量可以首先映射到一个函数，然后再参与线性计算。这样就可以表达特征与结果之间的非线性关">
+<meta name="twitter:image" content="http://yoursite.com/img/QQ截图20170829180302.png">
 
 
 
@@ -128,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/17/spring-boot-热部署/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/29/Linear-Regression/"/>
 
 
 
 
 
-  <title> spring boot 热部署 | Yan Zhong's blog </title>
+  <title> Linear Regression | Yan Zhong's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -273,7 +282,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/17/spring-boot-热部署/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/29/Linear-Regression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yan Zhong">
@@ -294,7 +303,7 @@
             
             
               
-                spring boot 热部署
+                Linear Regression
               
             
           </h1>
@@ -309,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-17T11:56:34+08:00">
-                2017-04-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-29T23:32:06+08:00">
+                2017-08-29
               </time>
             
 
@@ -320,28 +329,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/后台开发/" itemprop="url" rel="index">
-                    <span itemprop="name">后台开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -349,7 +336,7 @@
 
 
 
-   <span id="/2017/04/17/spring-boot-热部署/" class="leancloud_visitors" data-flag-title="spring boot 热部署">
+   <span id="/2017/08/29/Linear-Regression/" class="leancloud_visitors" data-flag-title="Linear Regression">
      &nbsp; | &nbsp;
      <span class="post-meta-item-icon">
        <i class="fa fa-eye"></i>
@@ -382,21 +369,68 @@
       
 
       
-        <h1 id="Spring-boot-热部署"><a href="#Spring-boot-热部署" class="headerlink" title="Spring boot 热部署"></a>Spring boot 热部署</h1><p>每次修改代码后都要重启tomcat感觉很麻烦，于是找了下资料，发现spring boot1.3以上就有热部署功能，我用的是1.4版本，此时不用待何时。</p>
-<p>环境信息</p>
+        <h2 id="Linear-Regression-线性回归"><a href="#Linear-Regression-线性回归" class="headerlink" title="Linear Regression(线性回归)"></a>Linear Regression(线性回归)</h2><p>​    线性回归的目的，就是从一堆已知数据和结果中，模拟出一条合适的函数线，之后再对这个函数输入新数据，便能产生出新的预测结果。</p>
+<p>​    线性回归假设特征和结果满足线性关系。其实线性关系的表达能力非常强大，每个特征对结果的影响强弱可以由前面的参数体现，而且每个特征变量可以首先映射到一个函数，然后再参与线性计算。这样就可以表达特征与结果之间的非线性关系。 </p>
+<p>​    从二维空间中引入问题，例如房屋的价格和房屋的面积是有一定关系的，以下是一些房屋的数据</p>
+<p><img src="\img\QQ截图20170829180302.png" alt="QQ截图20170829180302"></p>
+<p>​    我们可以把这些数据绘制成二维图</p>
+<p><img src="\img\2png.png" alt="2png"></p>
+<p>​    还记得我们一开始说的，就是要从已知数据中，进行回归绘制，产生一条回归函数，用来预测新的房屋价格，这里先给出对应的回归函数图形。</p>
+<p><img src="\img\31.png" alt="31"></p>
+<p><strong>这个过程就是线性回归</strong>，那么我们如何进行线性回归呢？在二维上，我们已经在高中就学会了，因为二维的线性回归方程就是y = kx +b ，这个函数的求解我们再熟悉不过了。可是如果在三维、四维、N维中如何求解，回到这个例子，这里只描述一个feature，就是房屋大小，如果还有影响房屋价格的因素，比如房屋的朝向、房屋的地理位置等，也就是说feature有多个，整个数据模型处于多维度空间中了。</p>
+<p>不要怕，细细分析。😀</p>
+<p>我们用X1，X2..Xn 去描述feature里面的分量，比如x1=房间的面积，x2=房间的朝向，等等，我们可以做出一个估计函数：</p>
+<p><img src="http://images.cnitblog.com/blog2015/633472/201503/262037556613399.jpg" alt="img"></p>
+<p>​        </p>
+<pre><code>θ在这儿称为**参数**，在这的意思是调整feature中每个分量的影响力，就是到底是房屋的面积更重要还是房屋的地段更重要。为了如果我们令X0 = 1，就可以化简式子来表示，其中W和X都是向量。
+</code></pre><p>​    那么我们如何来求解这个函数呢，首先我们要知道，这个函数的有多个解，我们第一步必须先找出哪个是最优的解，然后再解出参数得到函数全貌。</p>
+<p>​    如何知道什么样的函数最符合我们的数据模型，或者说我们需要一个机制去评估我们W是否比较好，所以说需要对我们做出的h函数进行评估，一般这个函数称为损失函数（cost function）或者错误函数(error function)，描述h函数不好的程度，在下面，我们称这个函数为J函数:</p>
+<p><img src="http://images.cnitblog.com/blog2015/633472/201503/262045294426265.jpg" alt="img9"></p>
+<p>其实在机器学习中，很多情况就是从先产生预测函数（估计函数），再用损失函数对预测函数进行评估，只要预测函数中的cost function越小，也就是 J(W)，也就说明该预测函数越好，所选取的参数越符合！</p>
+<p>所以问题转化为，<strong>求函数 J 的最小值问题</strong>。</p>
+<p>先来介绍第一种解法。</p>
+<p>求极值，自然联想到函数求导，只不过多维求导，略有复杂，以下给出求导过程。</p>
+<p><img src="http://images.cnitblog.com/blog2015/633472/201503/262057197703308.jpg" alt="img"></p>
+<p>但是这种解法有一个前提，就是矩阵满秩可求解时（求导等于0）。</p>
+<p>那如果矩阵不满秩呢？</p>
+<p>这里有一种更为通用的解法，<strong>梯度下降法</strong>。</p>
+<p><img src="http://img.my.csdn.net/uploads/201209/06/1346902296_9917.png" alt="img8"></p>
+<p>梯度下降法概念：梯度下降算法是一种求局部最优解的方法，对于F(<strong>x</strong>)，在a点的梯度是F(<strong>x</strong>)增长最快的方向，那么它的相反方向则是该点下降最快的方向。</p>
+<p>原理：将函数比作一座山，我们站在某个山坡上，往四周看，从哪个方向向下走一小步，能够下降的最快；</p>
+<p>注意：当变量之间大小相差很大时，应该先将他们做处理，使得他们的值在同一个范围，这样比较准确。</p>
+<p>我们以二元参数为例：</p>
+<p>（1）首先对θ（就是W）赋值，这个值可以是随机的，也可以让θ是一个全零的向量。</p>
+<p>（2）改变θ的值，使得J(θ)按梯度下降的方向进行减少。</p>
+<p>梯度下降法，更通俗的来说，就是对于我们的函数J(θ)求偏导，然后进行不断更新迭代。</p>
+<p><img src="http://img.my.csdn.net/uploads/201209/06/1346902185_3233.png" alt="img"></p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>1、为什么线性回归的损失函数是这样的</p>
+<p><img src="http://images.cnitblog.com/blog2015/633472/201503/262045294426265.jpg" alt="img1"></p>
+<p>答案是：这是最小二乘法，其中1/2系数是为了处理求导时候的约分而设置的，最小二乘法是作为线性回归中比较靠谱的损失函数，详细证明见参考。</p>
+<p>2、数值归一化（Feature Scaling）</p>
+<p>这是一种处理数值的思想：将各个feature的值标准化，使得取值范围大致都在-1&lt;=x&lt;=1之间；减少迭代次数或者数值太大导致的权重过大。常用的方法是Mean Normalization：</p>
+<p><img src="http://img.my.csdn.net/uploads/201209/06/1346902350_2576.png" alt="img4"></p>
+<p>3、梯度下降法参数的选择</p>
+<p><strong>迭代次数和learning rate是影响梯度下降法是否成功收敛到最优值的重要因素</strong>。</p>
 <ul>
-<li>idea</li>
-<li>spring boot 1.4</li>
+<li><strong>迭代次数</strong>：<ul>
+<li>过少可能使得算法还没有收敛就停止，</li>
+<li>过多导致资源（时间等）的浪费；</li>
 </ul>
-<p>废话不多说，直接使用教程。</p>
-<a id="more"></a>
-<p>首先打开pom.xml，配置文件如下,</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></div><div class="line">         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></div><div class="line">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>yan<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>com.yan<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.2.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-rest<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.h2database<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>h2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="comment">&lt;!-- spring热部署--&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">fork</span>&gt;</span>true<span class="tag">&lt;/<span class="name">fork</span>&gt;</span>   <span class="comment">&lt;!-- 設置打開热部署--&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">repository</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>spring-releases<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo.spring.io/libs-release<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">pluginRepositories</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">pluginRepository</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>spring-releases<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo.spring.io/libs-release<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">pluginRepository</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">pluginRepositories</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>然后ctrl+shift+alt+/ –&gt; 选择Registry –&gt; 找到并勾选compiler.automake.allow.when.app.running </p>
-<p><img src="/img/热部署2.png" alt="热部署2"></p>
-<p>打開idea的setting，因為idea默认设置是不自动编译，我们需要进行手动修改</p>
-<p><img src="/img/springboot热部署.png" alt="settng"></p>
-<p>这样便可，重启项目，运行。</p>
+</li>
+<li><strong>learning rate</strong>:<ul>
+<li>过小，使得每次迭代时theta的变化量过小，从而算法收敛过慢，换言之需要增加迭代次数使得算法收敛；</li>
+<li>过大，使得每次迭代时theta的变化量过大，可能在变化（迭代）过程中越过最优（收敛）点。</li>
+</ul>
+</li>
+</ul>
+<p><img src="\img\788978-20160306204228799-1880280740.png" alt="788978-20160306204228799-1880280740"></p>
+<hr>
+<h3 id="参考出处"><a href="#参考出处" class="headerlink" title="参考出处"></a>参考出处</h3><p><a href="http://blog.csdn.net/xiazdong/article/details/7950084" target="_blank" rel="external"></a></p>
+<p><a href="http://blog.csdn.net/xbinworld/article/details/43919445" target="_blank" rel="external"></a></p>
+<p><a href="http://www.cnblogs.com/jerrylead/archive/2011/03/05/1971867.html" target="_blank" rel="external"></a></p>
+<p><a href="http://www.cnblogs.com/llhthinker/p/5248586.html" target="_blank" rel="external"></a></p>
+<p>最近一次修改：2017/8/29</p>
+<p>修改次数：1</p>
 
       
     </div>
@@ -446,7 +480,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2017/04/17/spring-boot-热部署/" title="spring boot 热部署">http://yoursite.com/2017/04/17/spring-boot-热部署/</a>
+      <a href="http://yoursite.com/2017/08/29/Linear-Regression/" title="Linear Regression">http://yoursite.com/2017/08/29/Linear-Regression/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -462,7 +496,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/spring-boot/" rel="tag"># spring boot</a>
+            <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
           
         </div>
       
@@ -475,18 +509,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/29/Linear-Regression/" rel="next" title="Linear Regression">
-                <i class="fa fa-chevron-left"></i> Linear Regression
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/12/测试/" rel="prev" title="测试">
-                测试 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/17/spring-boot-热部署/" rel="prev" title="spring boot 热部署">
+                spring boot 热部署 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -661,7 +691,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-boot-热部署"><span class="nav-number">1.</span> <span class="nav-text">Spring boot 热部署</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-Regression-线性回归"><span class="nav-number">1.</span> <span class="nav-text">Linear Regression(线性回归)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#补充"><span class="nav-number">1.1.</span> <span class="nav-text">补充</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考出处"><span class="nav-number">1.2.</span> <span class="nav-text">参考出处</span></a></li></ol></li></ol></div>
             
 
           </div>
