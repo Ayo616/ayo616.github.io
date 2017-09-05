@@ -270,6 +270,220 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/05/Shortest-Path-Queries/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yan Zhong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yan Zhong's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/05/Shortest-Path-Queries/" itemprop="url">
+                  Shortest Path Queries
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-05T22:04:43+08:00">
+                2017-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+
+
+   <span id="/2017/09/05/Shortest-Path-Queries/" class="leancloud_visitors" data-flag-title="Shortest Path Queries">
+     &nbsp; | &nbsp;
+     <span class="post-meta-item-icon">
+       <i class="fa fa-eye"></i>
+     </span>
+     <span class="post-meta-item-text">阅读次数 </span>
+     <span class="leancloud-visitors-count"></span>
+    </span>
+
+
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="最短路径算法"><a href="#最短路径算法" class="headerlink" title="最短路径算法"></a>最短路径算法</h1><ul>
+<li>最短路径算法</li>
+</ul>
+<p>在日常生活中，我们经常会想从A地到达B地，但是A-&gt;B的路线有非常多，我们通常是希望选择最短的那一条路线，因为人都是懒的~，于是就出现了一个常谈的问题——最短路径问题。谈到最短路径，又会常联系到一种数据结构，那就是图。所以，在图（graph）中探讨最短路径是一个经典的问题。</p>
+<ul>
+<li>Dijkstra算法，A*算法</li>
+</ul>
+<p>经典的问题自然有经典的解法，Dijkstra算法就是一个经典。Dijkstra算法求出的结果，是原点到图中所有点的距离，从单对单扩展多了单对多的距离。A*算法更是一种聪明的算法，它常常应用在游戏中，避开障碍物找到最佳路劲达到终点。</p>
+<h2 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h2><p><strong>概述</strong>: </p>
+<p>Dijkstra算法是典型最短路算法，用于计算一个节点到其他所有节点的 最短路径。主要特点是以起始点为中心向外层层扩展，直到扩展到终点为止。Dijkstra算法能得出最短路径的最优解。</p>
+<p><strong>缺点</strong>：</p>
+<p>但由于它遍历计算的节点很多，所以效率比较低。</p>
+<p><strong>算法思想</strong>：</p>
+<p>每次找到离源点最近的一个顶点，然后以该顶点为中心进行扩展，最终得到源点到其余所有点的最短路径。听起来太简单了？实践操作一下就懂了</p>
+<p><strong>例子分析</strong></p>
+<p><img src="img\201795.png" alt="1"></p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>S集合</th>
+<th style="text-align:left">U集合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>选入A，此时S=<a>此时最短路径A→A=0以A为中间点，从A开始找</a></td>
+<td style="text-align:left">U=<b、c、d、e、f>    A→B=6，A→C=3，A→其它U中的顶点=∞，发现A→C=3权值为最短</b、c、d、e、f></td>
+</tr>
+<tr>
+<td>2</td>
+<td>选入C，此时S=<a、c> 此时最短路径A→A=0，A→C=3以C为中间点， 从A→C=3这条最短路径开始找</a、c></td>
+<td style="text-align:left">U=<b、d、e、f>      A→C→B=5(比上面第一步的A→B=6要短)此时到D权值更改为A→C→B=5，A→C→D=6，A→C→E=7， A→C→其它U中的顶点=∞，发现A→C→B=5权值为最短</b、d、e、f></td>
+</tr>
+<tr>
+<td>3</td>
+<td>选入B，此时S=<a、c、b>此时最短路径A→A=0，A→C=3，A→C→B=5以B为中间点 从A→C→B=5这条最短路径开始找</a、c、b></td>
+<td style="text-align:left">U=<d、e、f>     A→C→B→D=10(比上面第二步的A→C→D=6要长) 此时到D权值更改为A→C→D=6，A→C→B→其它U中的顶点=∞，发现A→C→D=6权值为最短</d、e、f></td>
+</tr>
+<tr>
+<td>4</td>
+<td>选入D，此时S=<a、c、b、d>此时最短路径A→A=0，A→C=3，A→C→B=5，A→C→D=6以D为中间点， 从A→C→D=6这条最短路径开始找</a、c、b、d></td>
+<td style="text-align:left">U=<e、f>    A→C→D→E=8(比上面第二步的 A→C→E=7要长)此时到E权值更改为A→C→E=7，A→C→D→F=9发现A→C→E=7权值为最短</e、f></td>
+</tr>
+<tr>
+<td>5</td>
+<td>选入E，此时S=<a、c、b、d、e>此时最短路径A→A=0，A→C=3，A→C→B=5，A→C→D=6，A→C→E=7，以E为中间点，从A→C→E=7这条最短路径开始找</a、c、b、d、e></td>
+<td style="text-align:left">U=<f>     A→C→E→F=12(比上面第四步的 A→C→D→F=9要长)此时到F权值更改为A→C→D→F=9发现A→C→D→F=9权值为最短</f></td>
+</tr>
+<tr>
+<td>6</td>
+<td>选入F，此时S=<a、c、b、d、e、f>此时最短路径A→A=0，A→C=3，A→C→B=5，A→C→D=6， A→C→E=7，A→C→D→F=9</a、c、b、d、e、f></td>
+<td style="text-align:left">U集合已空，查找完毕。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>算法分析与实现</strong></p>
+<p>首先，我们需要一个二维数组来存储这个图（点和边），并初始化它。e【a】[b]  = ? 来表示 a点与b点的距离。</p>
+<p>仔细想想，按照上面的例子分析。我们需要有两个集合，一个是已知最短路程的顶点集合 P 和未知最短路径的顶点集合 Q。我们用一个数组来实现。book[ i ] = 1 则表示这个顶点在集合 P 中，如果 book[ i ] =  0 则表示这个顶点在集合 Q 中。</p>
+<p>既然要求原点到每个点的距离，那我们也需要有个东西存储结论。这里也用个数组，dis[ i ] 表示 i 到原点的距离！</p>
+<p>设置源点 s 到自己的最短路径为 0 即 dis=0。若存在源点有能直接到达的顶点 i，则把 dis[ i ]设为 e[s][ i }。同时把所有其它（源点不能直接到达的）顶点的最短路径为设为 ∞。</p>
+<p>在集合 Q 的所有顶点中选择一个离源点 s 最近的顶点 u（即 dis[u]最小）加入到集合 P。并考察所有以点 u 为起点的边，对每一条边进行松弛操作。本来到V的距离是dis[v]，到u的距离是dis[u],现在存在一条从 u 到 v 的边，那么可以通过将边 u-&gt;v 添加到尾部来拓展一条从 s 到 v 的路径，这条路径的长度是 dis[u]+e[u]【v】。如果这个值比目前已知的 dis[v]的值要小，我们可以用新值来替代当前 dis[v]中的值。</p>
+<p>结束条件，如果集合 Q 为空，算法结束。最终 dis 数组中的值就是源点到所有顶点的最短路径</p>
+<p>完整的 Dijkstra 算法代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">include &lt;stdio.h&gt;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">    int e[10][10],dis[10],book[10],i,j,n,m,t1,t2,t3,u,v,min;</div><div class="line">    int inf=99999999; //用inf(infinity的缩写)存储一个我们认为的正无穷值</div><div class="line">    //读入n和m，n表示顶点个数，m表示边的条数</div><div class="line">    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);</div><div class="line"></div><div class="line">    //初始化</div><div class="line">    for(i=1;i&lt;=n;i++)</div><div class="line">        for(j=1;j&lt;=n;j++)</div><div class="line">            if(i==j) e[i][j]=0;</div><div class="line">              else e[i][j]=inf;</div><div class="line"></div><div class="line">    //读入边</div><div class="line">    for(i=1;i&lt;=m;i++)</div><div class="line">    &#123;</div><div class="line">        scanf(&quot;%d %d %d&quot;,&amp;t1,&amp;t2,&amp;t3);</div><div class="line">        e[t1][t2]=t3;</div><div class="line">    &#125;</div><div class="line">    //初始化dis数组，这里是1号顶点到其余各个顶点的初始路程</div><div class="line">    for(i=1;i&lt;=n;i++)</div><div class="line">        dis[i]=e[1][i];</div><div class="line">    //book数组初始化</div><div class="line">    for(i=1;i&lt;=n;i++)</div><div class="line">        book[i]=0;</div><div class="line">    book[1]=1;</div><div class="line"></div><div class="line">	//以上都是准备工作</div><div class="line"></div><div class="line">    //Dijkstra算法核心语句</div><div class="line">    for(i=1;i&lt;=n-1;i++)</div><div class="line">    &#123;</div><div class="line">        //找到离1号顶点最近的顶点</div><div class="line">        min=inf;</div><div class="line">        for(j=1;j&lt;=n;j++)</div><div class="line">        &#123;</div><div class="line">            if(book[j]==0 &amp;&amp; dis[j]&lt;min)</div><div class="line">            &#123;</div><div class="line">                min=dis[j];</div><div class="line">                u=j;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        book[u]=1;</div><div class="line">        for(v=1;v&lt;=n;v++)</div><div class="line">        &#123;</div><div class="line">            if(e[u][v]&lt;inf)</div><div class="line">            &#123;</div><div class="line">                if(dis[v]&gt;dis[u]+e[u][v])</div><div class="line">                    dis[v]=dis[u]+e[u][v];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //输出最终的结果</div><div class="line">    for(i=1;i&lt;=n;i++)</div><div class="line">        printf(&quot;%d &quot;,dis[i]);</div><div class="line"></div><div class="line">    getchar();</div><div class="line">    getchar();</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以输入以下数据进行验证。第一行两个整数 n m。n 表示顶点个数（顶点编号为 1~n），m 表示边的条数。接下来 m 行表示，每行有 3 个数 x y z。表示顶点 x 到顶点 y 边的权值为 z。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">6 9</div><div class="line">1 2 1</div><div class="line">1 3 12</div><div class="line">2 3 9</div><div class="line">2 4 3</div><div class="line">3 5 5</div><div class="line">4 3 4</div><div class="line">4 5 13</div><div class="line">4 6 15</div><div class="line">5 6 4</div></pre></td></tr></table></figure>
+<p>运行结果是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0 1 8 4 13 17</div></pre></td></tr></table></figure>
+<p><strong>算法总结</strong></p>
+<p>算法的时间复杂度是 O(N2)</p>
+<p>优化方案：</p>
+<ul>
+<li>其中每次找到离 1 号顶点最近的顶点的时间复杂度是 O(N)，这里我们可以用“堆”（以后再说）来优化，使得这一部分的时间复杂度降低到 O(logN)。</li>
+<li>对于边数 M 少于 N2 的稀疏图来说（我们把 M 远小于 N2 的图称为稀疏图，而 M 相对较大的图称为稠密图），我们可以用邻接表来代替邻接矩阵，使得整个时间复杂度优化到 O( (M+N)logN )。请注意！在最坏的情况下 M 就是 N2，这样的话 MlogN 要比 N2 还要大。但是大多数情况下并不会有那么多边，因此(M+N)logN 要比 N2 小很多。</li>
+</ul>
+<hr>
+<p>参考资料：</p>
+<p>【啊哈！算法】系列 7：Dijkstra 最短路算法</p>
+<p><a href="http://wiki.jikexueyuan.com/project/easy-learn-algorithm/dijkstra.html" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/easy-learn-algorithm/dijkstra.html</a></p>
+<p><a href="https://wenku.baidu.com/view/2284b709f61fb7360a4c6545.html/" target="_blank" rel="external">https://wenku.baidu.com/view/2284b709f61fb7360a4c6545.html/</a></p>
+<p>最近一次修改：2017.9.5</p>
+<p>修改次数：1</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/29/Linear-Regression/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -790,7 +1004,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -812,7 +1026,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
