@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="Yan Zhong's blog">
 <meta property="og:description" content="最短路径算法 最短路径算法  在日常生活中，我们经常会想从A地到达B地，但是A-&amp;gt;B的路线有非常多，我们通常是希望选择最短的那一条路线，因为人都是懒的~，于是就出现了一个常谈的问题——最短路径问题。谈到最短路径，又会常联系到一种数据结构，那就是图。所以，在图（graph）中探讨最短路径是一个经典的问题。  Dijkstra算法，A*算法  经典的问题自然有经典的解法，Dijkstra算法就是">
 <meta property="og:image" content="http://yoursite.com/2017/09/05/Shortest-Path-Queries/img/201795.png">
-<meta property="og:updated_time" content="2017-09-05T14:10:25.323Z">
+<meta property="og:updated_time" content="2017-09-05T14:16:34.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shortest Path Queries">
 <meta name="twitter:description" content="最短路径算法 最短路径算法  在日常生活中，我们经常会想从A地到达B地，但是A-&amp;gt;B的路线有非常多，我们通常是希望选择最短的那一条路线，因为人都是懒的~，于是就出现了一个常谈的问题——最短路径问题。谈到最短路径，又会常联系到一种数据结构，那就是图。所以，在图（graph）中探讨最短路径是一个经典的问题。  Dijkstra算法，A*算法  经典的问题自然有经典的解法，Dijkstra算法就是">
@@ -373,44 +373,45 @@
 <p>但由于它遍历计算的节点很多，所以效率比较低。</p>
 <p><strong>算法思想</strong>：</p>
 <p>每次找到离源点最近的一个顶点，然后以该顶点为中心进行扩展，最终得到源点到其余所有点的最短路径。听起来太简单了？实践操作一下就懂了</p>
+<a id="more"></a>
 <p><strong>例子分析</strong></p>
 <p><img src="img\201795.png" alt="1"></p>
 <table>
 <thead>
 <tr>
-<th>步骤</th>
+<th style="text-align:center">步骤</th>
 <th>S集合</th>
 <th style="text-align:left">U集合</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>1</td>
+<td style="text-align:center">1</td>
 <td>选入A，此时S=<a>此时最短路径A→A=0以A为中间点，从A开始找</a></td>
 <td style="text-align:left">U=<b、c、d、e、f>    A→B=6，A→C=3，A→其它U中的顶点=∞，发现A→C=3权值为最短</b、c、d、e、f></td>
 </tr>
 <tr>
-<td>2</td>
+<td style="text-align:center">2</td>
 <td>选入C，此时S=<a、c> 此时最短路径A→A=0，A→C=3以C为中间点， 从A→C=3这条最短路径开始找</a、c></td>
 <td style="text-align:left">U=<b、d、e、f>      A→C→B=5(比上面第一步的A→B=6要短)此时到D权值更改为A→C→B=5，A→C→D=6，A→C→E=7， A→C→其它U中的顶点=∞，发现A→C→B=5权值为最短</b、d、e、f></td>
 </tr>
 <tr>
-<td>3</td>
+<td style="text-align:center">3</td>
 <td>选入B，此时S=<a、c、b>此时最短路径A→A=0，A→C=3，A→C→B=5以B为中间点 从A→C→B=5这条最短路径开始找</a、c、b></td>
 <td style="text-align:left">U=<d、e、f>     A→C→B→D=10(比上面第二步的A→C→D=6要长) 此时到D权值更改为A→C→D=6，A→C→B→其它U中的顶点=∞，发现A→C→D=6权值为最短</d、e、f></td>
 </tr>
 <tr>
-<td>4</td>
+<td style="text-align:center">4</td>
 <td>选入D，此时S=<a、c、b、d>此时最短路径A→A=0，A→C=3，A→C→B=5，A→C→D=6以D为中间点， 从A→C→D=6这条最短路径开始找</a、c、b、d></td>
 <td style="text-align:left">U=<e、f>    A→C→D→E=8(比上面第二步的 A→C→E=7要长)此时到E权值更改为A→C→E=7，A→C→D→F=9发现A→C→E=7权值为最短</e、f></td>
 </tr>
 <tr>
-<td>5</td>
+<td style="text-align:center">5</td>
 <td>选入E，此时S=<a、c、b、d、e>此时最短路径A→A=0，A→C=3，A→C→B=5，A→C→D=6，A→C→E=7，以E为中间点，从A→C→E=7这条最短路径开始找</a、c、b、d、e></td>
 <td style="text-align:left">U=<f>     A→C→E→F=12(比上面第四步的 A→C→D→F=9要长)此时到F权值更改为A→C→D→F=9发现A→C→D→F=9权值为最短</f></td>
 </tr>
 <tr>
-<td>6</td>
+<td style="text-align:center">6</td>
 <td>选入F，此时S=<a、c、b、d、e、f>此时最短路径A→A=0，A→C=3，A→C→B=5，A→C→D=6， A→C→E=7，A→C→D→F=9</a、c、b、d、e、f></td>
 <td style="text-align:left">U集合已空，查找完毕。</td>
 </tr>

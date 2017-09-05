@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://images.cnitblog.com/blog2015/633472/201503/262045294426265.jpg">
 <meta property="og:image" content="http://img.my.csdn.net/uploads/201209/06/1346902350_2576.png">
 <meta property="og:image" content="http://yoursite.com/img/788978-20160306204228799-1880280740.png">
-<meta property="og:updated_time" content="2017-08-29T15:50:57.251Z">
+<meta property="og:updated_time" content="2017-09-05T14:16:14.547Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linear Regression">
 <meta name="twitter:description" content="Linear Regression(线性回归)​    线性回归的目的，就是从一堆已知数据和结果中，模拟出一条合适的函数线，之后再对这个函数输入新数据，便能产生出新的预测结果。 ​    线性回归假设特征和结果满足线性关系。其实线性关系的表达能力非常强大，每个特征对结果的影响强弱可以由前面的参数体现，而且每个特征变量可以首先映射到一个函数，然后再参与线性计算。这样就可以表达特征与结果之间的非线性关">
@@ -379,6 +379,7 @@
 <p><img src="\img\31.png" alt="31"></p>
 <p><strong>这个过程就是线性回归</strong>，那么我们如何进行线性回归呢？在二维上，我们已经在高中就学会了，因为二维的线性回归方程就是y = kx +b ，这个函数的求解我们再熟悉不过了。可是如果在三维、四维、N维中如何求解，回到这个例子，这里只描述一个feature，就是房屋大小，如果还有影响房屋价格的因素，比如房屋的朝向、房屋的地理位置等，也就是说feature有多个，整个数据模型处于多维度空间中了。</p>
 <p>不要怕，细细分析。😀</p>
+<a id="more"></a>
 <p>我们用X1，X2..Xn 去描述feature里面的分量，比如x1=房间的面积，x2=房间的朝向，等等，我们可以做出一个估计函数：</p>
 <p><img src="http://images.cnitblog.com/blog2015/633472/201503/262037556613399.jpg" alt="img"></p>
 <p>​    θ在这儿称为参数，在这的意思是调整feature中每个分量的影响力，就是到底是房屋的面积更重要还是房屋的地段更重要。如果我们令X0 = 1，就可以化简式子来表示，其中W和X都是向量。</p>

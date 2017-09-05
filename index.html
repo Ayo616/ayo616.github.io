@@ -356,8 +356,7 @@
 
       
         
-          
-            <h1 id="最短路径算法"><a href="#最短路径算法" class="headerlink" title="最短路径算法"></a>最短路径算法</h1><ul>
+          <h1 id="最短路径算法"><a href="#最短路径算法" class="headerlink" title="最短路径算法"></a>最短路径算法</h1><ul>
 <li>最短路径算法</li>
 </ul>
 <p>在日常生活中，我们经常会想从A地到达B地，但是A-&gt;B的路线有非常多，我们通常是希望选择最短的那一条路线，因为人都是懒的~，于是就出现了一个常谈的问题——最短路径问题。谈到最短路径，又会常联系到一种数据结构，那就是图。所以，在图（graph）中探讨最短路径是一个经典的问题。</p>
@@ -371,78 +370,13 @@
 <p>但由于它遍历计算的节点很多，所以效率比较低。</p>
 <p><strong>算法思想</strong>：</p>
 <p>每次找到离源点最近的一个顶点，然后以该顶点为中心进行扩展，最终得到源点到其余所有点的最短路径。听起来太简单了？实践操作一下就懂了</p>
-<p><strong>例子分析</strong></p>
-<p><img src="img\201795.png" alt="1"></p>
-<table>
-<thead>
-<tr>
-<th>步骤</th>
-<th>S集合</th>
-<th style="text-align:left">U集合</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>选入A，此时S=<a>此时最短路径A→A=0以A为中间点，从A开始找</a></td>
-<td style="text-align:left">U=<b、c、d、e、f>    A→B=6，A→C=3，A→其它U中的顶点=∞，发现A→C=3权值为最短</b、c、d、e、f></td>
-</tr>
-<tr>
-<td>2</td>
-<td>选入C，此时S=<a、c> 此时最短路径A→A=0，A→C=3以C为中间点， 从A→C=3这条最短路径开始找</a、c></td>
-<td style="text-align:left">U=<b、d、e、f>      A→C→B=5(比上面第一步的A→B=6要短)此时到D权值更改为A→C→B=5，A→C→D=6，A→C→E=7， A→C→其它U中的顶点=∞，发现A→C→B=5权值为最短</b、d、e、f></td>
-</tr>
-<tr>
-<td>3</td>
-<td>选入B，此时S=<a、c、b>此时最短路径A→A=0，A→C=3，A→C→B=5以B为中间点 从A→C→B=5这条最短路径开始找</a、c、b></td>
-<td style="text-align:left">U=<d、e、f>     A→C→B→D=10(比上面第二步的A→C→D=6要长) 此时到D权值更改为A→C→D=6，A→C→B→其它U中的顶点=∞，发现A→C→D=6权值为最短</d、e、f></td>
-</tr>
-<tr>
-<td>4</td>
-<td>选入D，此时S=<a、c、b、d>此时最短路径A→A=0，A→C=3，A→C→B=5，A→C→D=6以D为中间点， 从A→C→D=6这条最短路径开始找</a、c、b、d></td>
-<td style="text-align:left">U=<e、f>    A→C→D→E=8(比上面第二步的 A→C→E=7要长)此时到E权值更改为A→C→E=7，A→C→D→F=9发现A→C→E=7权值为最短</e、f></td>
-</tr>
-<tr>
-<td>5</td>
-<td>选入E，此时S=<a、c、b、d、e>此时最短路径A→A=0，A→C=3，A→C→B=5，A→C→D=6，A→C→E=7，以E为中间点，从A→C→E=7这条最短路径开始找</a、c、b、d、e></td>
-<td style="text-align:left">U=<f>     A→C→E→F=12(比上面第四步的 A→C→D→F=9要长)此时到F权值更改为A→C→D→F=9发现A→C→D→F=9权值为最短</f></td>
-</tr>
-<tr>
-<td>6</td>
-<td>选入F，此时S=<a、c、b、d、e、f>此时最短路径A→A=0，A→C=3，A→C→B=5，A→C→D=6， A→C→E=7，A→C→D→F=9</a、c、b、d、e、f></td>
-<td style="text-align:left">U集合已空，查找完毕。</td>
-</tr>
-</tbody>
-</table>
-<p><strong>算法分析与实现</strong></p>
-<p>首先，我们需要一个二维数组来存储这个图（点和边），并初始化它。e【a】[b]  = ? 来表示 a点与b点的距离。</p>
-<p>仔细想想，按照上面的例子分析。我们需要有两个集合，一个是已知最短路程的顶点集合 P 和未知最短路径的顶点集合 Q。我们用一个数组来实现。book[ i ] = 1 则表示这个顶点在集合 P 中，如果 book[ i ] =  0 则表示这个顶点在集合 Q 中。</p>
-<p>既然要求原点到每个点的距离，那我们也需要有个东西存储结论。这里也用个数组，dis[ i ] 表示 i 到原点的距离！</p>
-<p>设置源点 s 到自己的最短路径为 0 即 dis=0。若存在源点有能直接到达的顶点 i，则把 dis[ i ]设为 e[s][ i }。同时把所有其它（源点不能直接到达的）顶点的最短路径为设为 ∞。</p>
-<p>在集合 Q 的所有顶点中选择一个离源点 s 最近的顶点 u（即 dis[u]最小）加入到集合 P。并考察所有以点 u 为起点的边，对每一条边进行松弛操作。本来到V的距离是dis[v]，到u的距离是dis[u],现在存在一条从 u 到 v 的边，那么可以通过将边 u-&gt;v 添加到尾部来拓展一条从 s 到 v 的路径，这条路径的长度是 dis[u]+e[u]【v】。如果这个值比目前已知的 dis[v]的值要小，我们可以用新值来替代当前 dis[v]中的值。</p>
-<p>结束条件，如果集合 Q 为空，算法结束。最终 dis 数组中的值就是源点到所有顶点的最短路径</p>
-<p>完整的 Dijkstra 算法代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">include &lt;stdio.h&gt;</div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">    int e[10][10],dis[10],book[10],i,j,n,m,t1,t2,t3,u,v,min;</div><div class="line">    int inf=99999999; //用inf(infinity的缩写)存储一个我们认为的正无穷值</div><div class="line">    //读入n和m，n表示顶点个数，m表示边的条数</div><div class="line">    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);</div><div class="line"></div><div class="line">    //初始化</div><div class="line">    for(i=1;i&lt;=n;i++)</div><div class="line">        for(j=1;j&lt;=n;j++)</div><div class="line">            if(i==j) e[i][j]=0;</div><div class="line">              else e[i][j]=inf;</div><div class="line"></div><div class="line">    //读入边</div><div class="line">    for(i=1;i&lt;=m;i++)</div><div class="line">    &#123;</div><div class="line">        scanf(&quot;%d %d %d&quot;,&amp;t1,&amp;t2,&amp;t3);</div><div class="line">        e[t1][t2]=t3;</div><div class="line">    &#125;</div><div class="line">    //初始化dis数组，这里是1号顶点到其余各个顶点的初始路程</div><div class="line">    for(i=1;i&lt;=n;i++)</div><div class="line">        dis[i]=e[1][i];</div><div class="line">    //book数组初始化</div><div class="line">    for(i=1;i&lt;=n;i++)</div><div class="line">        book[i]=0;</div><div class="line">    book[1]=1;</div><div class="line"></div><div class="line">	//以上都是准备工作</div><div class="line"></div><div class="line">    //Dijkstra算法核心语句</div><div class="line">    for(i=1;i&lt;=n-1;i++)</div><div class="line">    &#123;</div><div class="line">        //找到离1号顶点最近的顶点</div><div class="line">        min=inf;</div><div class="line">        for(j=1;j&lt;=n;j++)</div><div class="line">        &#123;</div><div class="line">            if(book[j]==0 &amp;&amp; dis[j]&lt;min)</div><div class="line">            &#123;</div><div class="line">                min=dis[j];</div><div class="line">                u=j;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        book[u]=1;</div><div class="line">        for(v=1;v&lt;=n;v++)</div><div class="line">        &#123;</div><div class="line">            if(e[u][v]&lt;inf)</div><div class="line">            &#123;</div><div class="line">                if(dis[v]&gt;dis[u]+e[u][v])</div><div class="line">                    dis[v]=dis[u]+e[u][v];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //输出最终的结果</div><div class="line">    for(i=1;i&lt;=n;i++)</div><div class="line">        printf(&quot;%d &quot;,dis[i]);</div><div class="line"></div><div class="line">    getchar();</div><div class="line">    getchar();</div><div class="line">    return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>可以输入以下数据进行验证。第一行两个整数 n m。n 表示顶点个数（顶点编号为 1~n），m 表示边的条数。接下来 m 行表示，每行有 3 个数 x y z。表示顶点 x 到顶点 y 边的权值为 z。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">6 9</div><div class="line">1 2 1</div><div class="line">1 3 12</div><div class="line">2 3 9</div><div class="line">2 4 3</div><div class="line">3 5 5</div><div class="line">4 3 4</div><div class="line">4 5 13</div><div class="line">4 6 15</div><div class="line">5 6 4</div></pre></td></tr></table></figure>
-<p>运行结果是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0 1 8 4 13 17</div></pre></td></tr></table></figure>
-<p><strong>算法总结</strong></p>
-<p>算法的时间复杂度是 O(N2)</p>
-<p>优化方案：</p>
-<ul>
-<li>其中每次找到离 1 号顶点最近的顶点的时间复杂度是 O(N)，这里我们可以用“堆”（以后再说）来优化，使得这一部分的时间复杂度降低到 O(logN)。</li>
-<li>对于边数 M 少于 N2 的稀疏图来说（我们把 M 远小于 N2 的图称为稀疏图，而 M 相对较大的图称为稠密图），我们可以用邻接表来代替邻接矩阵，使得整个时间复杂度优化到 O( (M+N)logN )。请注意！在最坏的情况下 M 就是 N2，这样的话 MlogN 要比 N2 还要大。但是大多数情况下并不会有那么多边，因此(M+N)logN 要比 N2 小很多。</li>
-</ul>
-<hr>
-<p>参考资料：</p>
-<p>【啊哈！算法】系列 7：Dijkstra 最短路算法</p>
-<p><a href="http://wiki.jikexueyuan.com/project/easy-learn-algorithm/dijkstra.html" target="_blank" rel="external">http://wiki.jikexueyuan.com/project/easy-learn-algorithm/dijkstra.html</a></p>
-<p><a href="https://wenku.baidu.com/view/2284b709f61fb7360a4c6545.html/" target="_blank" rel="external">https://wenku.baidu.com/view/2284b709f61fb7360a4c6545.html/</a></p>
-<p>最近一次修改：2017.9.5</p>
-<p>修改次数：1</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/05/Shortest-Path-Queries/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -570,8 +504,7 @@
 
       
         
-          
-            <h2 id="Linear-Regression-线性回归"><a href="#Linear-Regression-线性回归" class="headerlink" title="Linear Regression(线性回归)"></a>Linear Regression(线性回归)</h2><p>​    线性回归的目的，就是从一堆已知数据和结果中，模拟出一条合适的函数线，之后再对这个函数输入新数据，便能产生出新的预测结果。</p>
+          <h2 id="Linear-Regression-线性回归"><a href="#Linear-Regression-线性回归" class="headerlink" title="Linear Regression(线性回归)"></a>Linear Regression(线性回归)</h2><p>​    线性回归的目的，就是从一堆已知数据和结果中，模拟出一条合适的函数线，之后再对这个函数输入新数据，便能产生出新的预测结果。</p>
 <p>​    线性回归假设特征和结果满足线性关系。其实线性关系的表达能力非常强大，每个特征对结果的影响强弱可以由前面的参数体现，而且每个特征变量可以首先映射到一个函数，然后再参与线性计算。这样就可以表达特征与结果之间的非线性关系。 </p>
 <p>​    从二维空间中引入问题，例如房屋的价格和房屋的面积是有一定关系的，以下是一些房屋的数据</p>
 <p><img src="\img\QQ截图20170829180302.png" alt="QQ截图20170829180302"></p>
@@ -581,59 +514,13 @@
 <p><img src="\img\31.png" alt="31"></p>
 <p><strong>这个过程就是线性回归</strong>，那么我们如何进行线性回归呢？在二维上，我们已经在高中就学会了，因为二维的线性回归方程就是y = kx +b ，这个函数的求解我们再熟悉不过了。可是如果在三维、四维、N维中如何求解，回到这个例子，这里只描述一个feature，就是房屋大小，如果还有影响房屋价格的因素，比如房屋的朝向、房屋的地理位置等，也就是说feature有多个，整个数据模型处于多维度空间中了。</p>
 <p>不要怕，细细分析。😀</p>
-<p>我们用X1，X2..Xn 去描述feature里面的分量，比如x1=房间的面积，x2=房间的朝向，等等，我们可以做出一个估计函数：</p>
-<p><img src="http://images.cnitblog.com/blog2015/633472/201503/262037556613399.jpg" alt="img"></p>
-<p>​    θ在这儿称为参数，在这的意思是调整feature中每个分量的影响力，就是到底是房屋的面积更重要还是房屋的地段更重要。如果我们令X0 = 1，就可以化简式子来表示，其中W和X都是向量。</p>
-<p>​    那么我们如何来求解这个函数呢，首先我们要知道，这个函数的有多个解，我们第一步必须先找出哪个是最优的解，然后再解出参数得到函数全貌。</p>
-<p>​    如何知道什么样的函数最符合我们的数据模型，或者说我们需要一个机制去评估我们W是否比较好，所以说需要对我们做出的h函数进行评估，一般这个函数称为损失函数（cost function）或者错误函数(error function)，描述h函数不好的程度，在下面，我们称这个函数为J函数:</p>
-<p><img src="http://images.cnitblog.com/blog2015/633472/201503/262045294426265.jpg" alt="img9"></p>
-<p>其实在机器学习中，很多情况就是从先产生预测函数（估计函数），再用损失函数对预测函数进行评估，只要预测函数中的cost function越小，也就是 J(W)，也就说明该预测函数越好，所选取的参数越符合！</p>
-<p>所以问题转化为，<strong>求函数 J 的最小值问题</strong>。</p>
-<p>先来介绍第一种解法。</p>
-<p>求极值，自然联想到函数求导，只不过多维求导，略有复杂，以下给出求导过程。</p>
-<p><img src="http://images.cnitblog.com/blog2015/633472/201503/262057197703308.jpg" alt="img"></p>
-<p>但是这种解法有一个前提，就是矩阵满秩可求解时（求导等于0）。</p>
-<p>那如果矩阵不满秩呢？</p>
-<p>这里有一种更为通用的解法，<strong>梯度下降法</strong>。</p>
-<p><img src="http://img.my.csdn.net/uploads/201209/06/1346902296_9917.png" alt="img8"></p>
-<p>梯度下降法概念：梯度下降算法是一种求局部最优解的方法，对于F(<strong>x</strong>)，在a点的梯度是F(<strong>x</strong>)增长最快的方向，那么它的相反方向则是该点下降最快的方向。</p>
-<p>原理：将函数比作一座山，我们站在某个山坡上，往四周看，从哪个方向向下走一小步，能够下降的最快；</p>
-<p>注意：当变量之间大小相差很大时，应该先将他们做处理，使得他们的值在同一个范围，这样比较准确。</p>
-<p>我们以二元参数为例：</p>
-<p>（1）首先对θ（就是W）赋值，这个值可以是随机的，也可以让θ是一个全零的向量。</p>
-<p>（2）改变θ的值，使得J(θ)按梯度下降的方向进行减少。</p>
-<p>梯度下降法，更通俗的来说，就是对于我们的函数J(θ)求偏导，然后进行不断更新迭代。</p>
-<p><img src="http://img.my.csdn.net/uploads/201209/06/1346902185_3233.png" alt="img"></p>
-<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>1、为什么线性回归的损失函数是这样的</p>
-<p><img src="http://images.cnitblog.com/blog2015/633472/201503/262045294426265.jpg" alt="img1"></p>
-<p>答案是：这是最小二乘法，其中1/2系数是为了处理求导时候的约分而设置的，最小二乘法是作为线性回归中比较靠谱的损失函数，详细证明见参考。</p>
-<p>2、数值归一化（Feature Scaling）</p>
-<p>这是一种处理数值的思想：将各个feature的值标准化，使得取值范围大致都在-1&lt;=x&lt;=1之间；减少迭代次数或者数值太大导致的权重过大。常用的方法是Mean Normalization：</p>
-<p><img src="http://img.my.csdn.net/uploads/201209/06/1346902350_2576.png" alt="img4"></p>
-<p>3、梯度下降法参数的选择</p>
-<p><strong>迭代次数和learning rate是影响梯度下降法是否成功收敛到最优值的重要因素</strong>。</p>
-<ul>
-<li><strong>迭代次数</strong>：<ul>
-<li>过少可能使得算法还没有收敛就停止，</li>
-<li>过多导致资源（时间等）的浪费；</li>
-</ul>
-</li>
-<li><strong>learning rate</strong>:<ul>
-<li>过小，使得每次迭代时theta的变化量过小，从而算法收敛过慢，换言之需要增加迭代次数使得算法收敛；</li>
-<li>过大，使得每次迭代时theta的变化量过大，可能在变化（迭代）过程中越过最优（收敛）点。</li>
-</ul>
-</li>
-</ul>
-<p><img src="\img\788978-20160306204228799-1880280740.png" alt="788978-20160306204228799-1880280740"></p>
-<hr>
-<h3 id="参考出处"><a href="#参考出处" class="headerlink" title="参考出处"></a>参考出处</h3><p><a href="http://blog.csdn.net/xiazdong/article/details/7950084" target="_blank" rel="external">http://blog.csdn.net/xiazdong/article/details/7950084</a></p>
-<p><a href="http://blog.csdn.net/xbinworld/article/details/43919445" target="_blank" rel="external">http://blog.csdn.net/xbinworld/article/details/43919445</a></p>
-<p><a href="http://www.cnblogs.com/jerrylead/archive/2011/03/05/1971867.html" target="_blank" rel="external">http://www.cnblogs.com/jerrylead/archive/2011/03/05/1971867.html</a></p>
-<p><a href="http://www.cnblogs.com/llhthinker/p/5248586.html" target="_blank" rel="external">http://www.cnblogs.com/llhthinker/p/5248586.html</a></p>
-<p>最近一次修改：2017/8/29</p>
-<p>修改次数：1</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/08/29/Linear-Regression/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
