@@ -376,6 +376,7 @@
 <a id="more"></a>
 <p><strong>例子分析</strong></p>
 <p><img src="\img\201795.png" alt="1"></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -417,6 +418,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>算法分析与实现</strong></p>
 <p>首先，我们需要一个二维数组来存储这个图（点和边），并初始化它。e【a】[b]  = ? 来表示 a点与b点的距离。</p>
 <p>仔细想想，按照上面的例子分析。我们需要有两个集合，一个是已知最短路程的顶点集合 P 和未知最短路径的顶点集合 Q。我们用一个数组来实现。book[ i ] = 1 则表示这个顶点在集合 P 中，如果 book[ i ] =  0 则表示这个顶点在集合 Q 中。</p>
